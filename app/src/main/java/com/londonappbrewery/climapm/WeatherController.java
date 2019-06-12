@@ -23,7 +23,7 @@ public class WeatherController extends AppCompatActivity {
     // TODO: Set LOCATION_PROVIDER here:
     String LOCATION_PROVIDER = LocationManager.GPS_PROVIDER;
     // pela rede de dados LocationManager.NETWORK_PROVIDER
-// Tag de debug
+    // Tag de debug
     final String LOGCAT_TAG = "Clima";
 
     LocationManager mLocationManager;
@@ -58,7 +58,12 @@ public class WeatherController extends AppCompatActivity {
 
 
     // TODO: Add onResume() here:
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(LOGCAT_TAG, "onResume() called");
+        getWeatherForCurrentLocation();
+    }
 
 
     // TODO: Add getWeatherForNewCity(String city) here:
@@ -66,6 +71,23 @@ public class WeatherController extends AppCompatActivity {
 
 
     // TODO: Add getWeatherForCurrentLocation() here:
+    private void getWeatherForCurrentLocation() {
+        mLocationManager = (LocationManager) getSystemService(Context. LOCATION_SERVICE);
+        mLocationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+            }
+            @Override
+            public void onStatusChanged(String s, int i, Bundle bundle) {
+            }
+            @Override
+            public void onProviderEnabled(String s) {
+            }
+            @Override
+            public void onProviderDisabled(String s) {
+            }
+        };
+    }
 
 
 
